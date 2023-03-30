@@ -3,28 +3,27 @@ import { useState } from "react";
 
 const Item = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [open, setOpen] = useState('none');
+  const [open, setOpen] = useState("none");
   const [quantity, setQuantity] = useState(0);
   const [cart, setCart] = useState([]);
 
-
-  function addToCart(){
-    cart.push({Products: props.prodName, Price: props.price});
+  function addToCart() {
+    cart.push({ Products: props.prodName, Price: props.price });
     setCart(cart);
     localStorage.setItem("cartStorage", JSON.stringify(cart));
     showCart();
   }
-  function showCart(){
-    cart.forEach(function(itemness){
-      alert(itemness.Products + itemness.Price)
-    })
+  function showCart() {
+    cart.forEach(function (itemness) {
+      alert(itemness.Products + itemness.Price);
+    });
   }
 
   const prodQuantity = (e) => {
     const btnId = e.target.id;
-    switch (btnId){
+    switch (btnId) {
       case "plus":
-        setQuantity((quantity) + 1);
+        setQuantity(quantity + 1);
         break;
       case "minus":
         setQuantity(quantity === 0 ? 0 : quantity - 1);
@@ -34,9 +33,9 @@ const Item = (props) => {
     }
   };
 
-  const modalOpen = () =>{
-    setOpen(open === 'none' ? 'flex' : 'none');
-  }
+  const modalOpen = () => {
+    setOpen(open === "none" ? "flex" : "none");
+  };
 
   function toggleModal() {
     setIsOpen(!isOpen);
@@ -56,18 +55,19 @@ const Item = (props) => {
         <p className="stat">{props.stat}</p>
         <h1>{props.prodName}</h1>
         <div className="star">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-regular fa-star"></i>
           (4.0)
         </div>
       </div>
       <div className="btnContainer">
         <h1>₱{props.price}</h1>
         <div>
-          <button id="buy"
+          <button
+            id="buy"
             onClick={() => {
               toggleModal();
               modalOpen();
@@ -98,18 +98,41 @@ const Item = (props) => {
                   <p className="theQuant">(125 quantity)</p>
                 </div>
                 <div className="quantity">
-                  <button id="minus" onClick={prodQuantity}>-</button>
-                  <input type="number" value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value))}/>
-                  <button id="plus" onClick={prodQuantity}>+</button>
+                  <button id="minus" onClick={prodQuantity}>
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    value={quantity}
+                    onChange={(e) => setQuantity(parseInt(e.target.value))}
+                  />
+                  <button id="plus" onClick={prodQuantity}>
+                    +
+                  </button>
                 </div>
                 <div className="modal-buy">
-                  <button className="modal-AddtoCart" onClick={() => addToCart()}><img src={props.cart} /><h2>Add to Cart</h2></button>
-                  <button className="modal-buyNow"><h2>Buy Now</h2></button>
+                  <button
+                    className="modal-AddtoCart"
+                    onClick={() => addToCart()}
+                  >
+                    <img src={props.cart} />
+                    <h2>Add to Cart</h2>
+                  </button>
+                  <button className="modal-buyNow">
+                    <h2>Buy Now</h2>
+                  </button>
                 </div>
               </div>
             </div>
             <div className="modal-btn">
-              <p onClick={() => {toggleModal(); modalOpen()}}><i class="fa-solid fa-x"></i></p>
+              <p
+                onClick={() => {
+                  toggleModal();
+                  modalOpen();
+                }}
+              >
+                <i class="fa-solid fa-x"></i>
+              </p>
             </div>
           </div>
         </div>

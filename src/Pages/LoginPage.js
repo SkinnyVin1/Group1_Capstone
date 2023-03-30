@@ -15,66 +15,34 @@ const LoginPage = () => {
     setShowPassword(!showPassword);
   };
 
-  // const [user, setUser] = useState([]); 1st Approach
+  const LoginFunction = (e) => {
+    e.preventDefault();
+    let getData = new FormData();
+    getData.append("username", document.getElementById("user").value);
+    getData.append("password", document.getElementById("pass").value);
 
-  // const LoginFunction = (e) => {
-  //   e.preventDefault();
-  //   let getData = new FormData();
-  //   getData.append("username", document.getElementById("user").value);
-  //   getData.append("password", document.getElementById("pass").value);
-
-  //   axios({ 
-  //     method: "POST",
-  //     url: "http://localhost/grocerease.db/validate.php",
-  //     data: getData,
-  //   }).then(function (response) {
-  //     if (response.data != "Login Failed") {
-  //       const username = response.data.username;
-  //       alert("Login Successfull, Go to Homepage?");
-  //       localStorage.setItem("mytime", response.data);
-  //       window.location.href = "/group1_capstone";
-  //       if(username == 'Admin'){
-  //         alert('logged in as Admin');
-  //       }else{
-  //         alert({username});
-
-  //       }
-  //     } else {
-  //       alert("Username or Password did not match");
-  //     }
-  //   });
-  // };
-  
-    const LoginFunction = (e) => {
-      e.preventDefault();
-      let getData = new FormData();
-      getData.append("username", document.getElementById("user").value);
-      getData.append("password", document.getElementById("pass").value);
-  
-      axios({
-        method: "POST",
-        url: "http://localhost/grocerease.db/validate.php",
-        data: getData,
-      }).then(function (response) {
-        if (response.data.message === "Login Successful") {
-          const username = response.data.username;
-          localStorage.setItem("mytime", username);
-          localStorage.setItem('isLoggedIn', true);
-          if(username === 'Admin'){
-            alert('logged in as Admin');
-            window.location.href = "/Shop"
-          } else {
-            alert('Login Sucessfull');
-            window.location.href = "/group1_capstone"
-          }
+    axios({
+      method: "POST",
+      url: "http://localhost/grocerease_database/validate.php",
+      data: getData,
+    }).then(function (response) {
+      if (response.data.message === "Login Successful") {
+        const username = response.data.username;
+        localStorage.setItem("mytime", username);
+        localStorage.setItem("isLoggedIn", true);
+        if (username === "Admin") {
+          alert("logged in as Admin");
+          window.location.href = "/Dashboard";
         } else {
-          setWarningText("Username or Password did not match");
+          alert("Login Sucessfull");
+          window.location.href = "/group1_capstone";
         }
-      });
+      } else {
+        setWarningText("Username or Password did not match");
+      }
+    });
   };
-  
 
-    
   return (
     <div className="loginBody">
       <img src={Bg} id="bg" />
@@ -95,9 +63,9 @@ const LoginPage = () => {
             </div>
             <img src={ShoImg} id="hideImg" />
             <div className="logform">
-            {warningText && <p className="warningText">{warningText}</p>}
-            <form>
-                  <input
+              {warningText && <p className="warningText">{warningText}</p>}
+              <form>
+                <input
                   type="text"
                   placeholder="Username"
                   className="inText"
@@ -125,7 +93,7 @@ const LoginPage = () => {
                     </button>
                   </div>
                 </div>
-                
+
                 <button onClick={LoginFunction}>Log In</button>
 
                 <Link to="/Register"> or create an account</Link>
