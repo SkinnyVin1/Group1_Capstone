@@ -15,7 +15,7 @@
     cursor: pointer;
   }
   
-  ion-icon, span { display: inline-block; }
+  i, span { display: inline-block; }
   
   input {
     font: inherit;
@@ -23,7 +23,7 @@
     border: none;
   }
   
-  input:focus { outline: 2px solid blue; }
+  input:focus { outline: 2px solid  #49c956; }
   
   
   
@@ -52,7 +52,7 @@
     gap: 20px;
   }
   
-  .heading ion-icon { font-size: 40px; }
+  .heading i{ font-size: 40px; }
   
   .item-flex {
     display: flex;
@@ -95,16 +95,16 @@
     cursor: pointer;
   }
   
-  .payment-method .selected { border-color:  hsl(219, 77%, 60%); }
+  .payment-method .selected { border-color:   #49c956; }
   
-  .payment-method .method ion-icon { font-size: 20px; }
+  .payment-method .method i { font-size: 20px; }
   
   .payment-method .method .checkmark {
     margin-left: auto;
     color: hsl(0, 0%, 64%);
   }
   
-  .payment-method .method .fill { color: hsl(219, 77%, 60%); }
+  .payment-method .method .fill { color: #49c956 }
   
   .label-default {
     padding-left: 10px;
@@ -154,13 +154,13 @@
   
   .btn:focus {
     color: white;
-    background:  hsl(219, 77%, 60%);
-    outline: 2px solid  hsl(219, 77%, 60%);
+    background:   #49c956;
+    outline: 2px solid   #49c956;
     outline-offset: 2px;
   }
   
   .btn-primary {
-    background:  hsl(219, 77%, 60%);
+    background:  #49c956;
     font-weight: 500;
     color: white;
     padding: 13px 45px;
@@ -194,16 +194,16 @@
     gap: 20px;
   }
   
-  .card .product-img { border-radius: var(--radius); }
+  .card-cart .product-img { border-radius: var(--radius); }
   
-  .card .detail .product-name {
+  .card-cart .detail .product-name {
     font-weight: 600;
     font-size: 15px;
     color:  hsl(0, 0%, 39%);;
     margin-bottom: 10px;
   }
   
-  .card .detail .wrapper {
+  .card-card .detail .wrapper {
     display: flex;
     gap: 20px;
   }
@@ -224,9 +224,9 @@
   }
   
   .product-qty button:active,
-  .product-close-btn:active ion-icon { transform: scale(0.95); }
+  .product-close-btn:active i{ transform: scale(0.95); }
   
-  .product-qty button ion-icon {
+  .product-qty button i{
     --ionicon-stroke-width: 60px;
     font-size: 10px;
   }
@@ -237,12 +237,12 @@
     right: 0;
   }
   
-  .product-close-btn ion-icon {
+  .product-close-btn i {
     font-size: 25px;
     color: hsl(0, 0%, 64%);
   }
   
-  .product-close-btn:hover ion-icon { color:  hsl(0, 77%, 60%); }
+  .product-close-btn:hover i { color:  hsl(0, 77%, 60%); }
   
   .discount-token {
     padding: 40px var(--px);
@@ -265,12 +265,12 @@
   
   .btn-outline {
     padding: 10px 25px;
-    border: 1px solid  hsl(219, 77%, 60%);
-    color:  hsl(219, 77%, 60%);
+    border: 1px solid  #49c956;
+    color:  #49c956;
   }
   
   .btn-outline:hover {
-    background:  hsl(219, 77%, 60%);
+    background:   #49c956;
     color: white;
   }
   

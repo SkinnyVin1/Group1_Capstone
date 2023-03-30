@@ -13,7 +13,7 @@ const Cart = () => {
                     <div class="cart-item-box">
                         <h2 class="section-heading">Order Summary</h2>
                         <div class="product-card">
-                            <div class="card">
+                            <div class="card-cart">
                                 <div class="img-box">
                                     <img src={product1}  class="product-img"/>
                                 </div>
@@ -41,7 +41,7 @@ const Cart = () => {
                         </div>
             
                         <div class="product-card">
-                            <div class="card">
+                            <div class="card-cart">
                                 <div class="img-box">
                                     <img src={product2} width="80px" class="product-img"/>
                                 </div>
