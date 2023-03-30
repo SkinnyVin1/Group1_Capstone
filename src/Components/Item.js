@@ -1,23 +1,20 @@
 import "../Components/Item.css";
 import { useState } from "react";
+import Cart from "../Pages/Cart";
+
+
 
 const Item = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState('none');
   const [quantity, setQuantity] = useState(0);
   const [cart, setCart] = useState([]);
+  // const [Items, setItems] = useState(``);
 
-
-  function addToCart(){
-    cart.push({Products: props.prodName, Price: props.price});
-    setCart(cart);
-    localStorage.setItem("cartStorage", JSON.stringify(cart));
-    showCart();
-  }
-  function showCart(){
-    cart.forEach(function(itemness){
-      alert(itemness.Products + itemness.Price)
-    })
+  function addToCart() {
+    const newCartItem = { Products: props.prodName, Price: props.price, Image: props.image };
+    setCart([...cart, newCartItem]);
+    localStorage.setItem("cartStorage", JSON.stringify([...cart, newCartItem]));
   }
 
   const prodQuantity = (e) => {
@@ -113,6 +110,9 @@ const Item = (props) => {
             </div>
           </div>
         </div>
+      </div>
+      <div style={{display: "none"}}>
+        <Cart cart={cart}></Cart>
       </div>
     </div>
   );

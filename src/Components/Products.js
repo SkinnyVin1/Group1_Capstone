@@ -69,7 +69,7 @@ const Product = () => {
             prodName={isMobile ? "Coca..." : "Coca-Cola"}
             price="50"
             cart={Cart}
-          ></Item>
+          ><button>dsfkjbdfk</button></Item>
           <Item
             image={product2}
             stat="IN STOCK"
