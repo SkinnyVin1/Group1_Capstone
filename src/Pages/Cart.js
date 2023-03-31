@@ -6,10 +6,24 @@ import product2 from "../Images/shop-images/Products/p2.png";
 // import { useEffect } from "react";
 
 const Cart = () => {
+  let CartStorage = JSON.parse(localStorage.getItem("cartStorage"));
+  let OrderStorage = localStorage.getItem("cartStorage");
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-    let CartStorage = JSON.parse(localStorage.getItem("cartStorage"));
+  function isLoggednot() {
+    if (isLoggedIn) {
+      // redirect to profile page
+      alert("Thank you for shoping. Your order is now on process");
+      localStorage.setItem("orderStorage", OrderStorage);
+      localStorage.removeItem("cartStorage");
+      window.location.href = "/group1_capstone";
+    } else {
+      alert("Please Login to Continue");
+      window.location.href = "/Login";
+    }
+  }
 
-    return (
+  return (
     <main class="cart-body">
       <h1 class="heading">Shopping Cart</h1>
 
@@ -18,29 +32,29 @@ const Cart = () => {
           <div class="cart-item-box">
             <h2 class="section-heading">Order Summary</h2>
             <div class="product-card">
-                <div class="card-cart" id="cardForCart">
-                    {CartStorage.map((itemness)=>{
-                        return(
-                            <div className="thisCart">
-                                <div class="img-box">
-                                    <img src={itemness.Image} class="product-img" />
-                                </div>
+              <div class="card-cart" id="cardForCart">
+                {CartStorage.map((itemness) => {
+                  return (
+                    <div className="thisCart">
+                      <div class="img-box">
+                        <img src={itemness.Image} class="product-img" />
+                      </div>
 
-                                <div class="detail">
-                                    <h4 class="product-name">{itemness.Products}</h4>
-                                    <div class="wrapper">
-                                        <div class="price">
-                                            <h4 id="price">₱{itemness.Price}</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="product-close-btn">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </button>
-                            </div>
-                        )
-                    })}
-                </div>
+                      <div class="detail">
+                        <h4 class="product-name">{itemness.Products}</h4>
+                        <div class="wrapper">
+                          <div class="price">
+                            <h4 id="price">₱{itemness.Price}</h4>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="product-close-btn">
+                        <i class="fa-solid fa-xmark"></i>
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
@@ -181,7 +195,7 @@ const Cart = () => {
             </form>
           </div>
 
-          <button class="btn btn-primary">
+          <button class="btn btn-primary" onClick={isLoggednot}>
             <b>Checkout</b>
           </button>
         </section>
