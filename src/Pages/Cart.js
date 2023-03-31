@@ -3,20 +3,32 @@ import "./CartPage.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import product1 from "../Images/shop-images/Products/p1.png";
 import product2 from "../Images/shop-images/Products/p2.png";
+import { useState, useEffect } from "react";
 // import { useEffect } from "react";
 
 const Cart = () => {
   let CartStorage = JSON.parse(localStorage.getItem("cartStorage"));
   let OrderStorage = localStorage.getItem("cartStorage");
   const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const [cartNone, setCartNone] = useState("");
 
+  useEffect(() => {
+    let CartStorage = JSON.parse(localStorage.getItem("cartStorage"));
+    if (!CartStorage) {
+      setCartNone("Your Cart is Empty");
+    }
+  }, []);
   function isLoggednot() {
     if (isLoggedIn) {
       // redirect to profile page
-      alert("Thank you for shoping. Your order is now on process");
-      localStorage.setItem("orderStorage", OrderStorage);
-      localStorage.removeItem("cartStorage");
-      window.location.href = "/group1_capstone";
+      if (!CartStorage) {
+        alert("Please Add some Product");
+      } else {
+        alert("Thank you for shoping. Your order is now on process");
+        localStorage.setItem("orderStorage", OrderStorage);
+        localStorage.removeItem("cartStorage");
+        window.location.href = "/group1_capstone";
+      }
     } else {
       alert("Please Login to Continue");
       window.location.href = "/Login";
@@ -26,34 +38,37 @@ const Cart = () => {
   return (
     <main class="cart-body">
       <h1 class="heading">Shopping Cart</h1>
-
       <div class="item-flex">
         <section class="cart">
           <div class="cart-item-box">
             <h2 class="section-heading">Order Summary</h2>
             <div class="product-card">
               <div class="card-cart" id="cardForCart">
-                {CartStorage.map((itemness) => {
-                  return (
-                    <div className="thisCart">
-                      <div class="img-box">
-                        <img src={itemness.Image} class="product-img" />
-                      </div>
+                {CartStorage && CartStorage.length > 0 ? (
+                  CartStorage.map((itemness) => {
+                    return (
+                      <div className="thisCart">
+                        <div class="img-box">
+                          <img src={itemness.Image} class="product-img" />
+                        </div>
 
-                      <div class="detail">
-                        <h4 class="product-name">{itemness.Products}</h4>
-                        <div class="wrapper">
-                          <div class="price">
-                            <h4 id="price">₱{itemness.Price}</h4>
+                        <div className="detail">
+                          <h4 className="product-name">{itemness.Products}</h4>
+                          <div className="wrapper">
+                            <div className="price">
+                              <h4 id="price">₱{itemness.Price}</h4>
+                            </div>
                           </div>
                         </div>
+                        <button className="product-close-btn">
+                          <i className="fa-solid fa-xmark"></i>
+                        </button>
                       </div>
-                      <button class="product-close-btn">
-                        <i class="fa-solid fa-xmark"></i>
-                      </button>
-                    </div>
-                  );
-                })}
+                    );
+                  })
+                ) : (
+                  <h1>Your Cart is Empty</h1>
+                )}
               </div>
             </div>
           </div>
