@@ -6,8 +6,7 @@ const Item = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState("none");
   const [quantity, setQuantity] = useState(0);
-  // const [cart, setCart] = useState([]);
-  // const [Items, setItems] = useState(``);
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   function addToCart(name, price, image) {
     if (localStorage.getItem("cartStorage")) {
@@ -18,20 +17,9 @@ const Item = (props) => {
     }else {
       let cart = [];
       cart.push({ Products: name, Price: price, Image: image });
-      // setCart(cart);
       localStorage.setItem("cartStorage", JSON.stringify(cart));
     }
   }
-
-  // function addToCart(locla){
-  //   if(){
-
-  //   }
-  //   cart.push({Products: props.prodName, Price: props.price, Image: props.image});
-  //   setCart(cart);
-  //   localStorage.setItem("cartStorage", JSON.stringify(cart));
-  //   showCart();
-  // }
 
   const prodQuantity = (e) => {
     const btnId = e.target.id;
