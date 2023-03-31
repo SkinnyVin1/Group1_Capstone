@@ -1,20 +1,15 @@
 import Footer from "../Components/Footer";
 import "./CartPage.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import product1 from "../Images/shop-images/Products/p1.png";
 import product2 from "../Images/shop-images/Products/p2.png";
-import { useState, useEffect } from "react";
+// import { useEffect } from "react";
 
-const Cart = (props) => {
-    const [cart, setCart] = useState([]);
+const Cart = () => {
 
-    useEffect(() => {
-        const cartStorage = JSON.parse(localStorage.getItem("cartStorage"));
-        if (cartStorage) {
-        setCart(cartStorage);
-        }
-    });
+    let CartStorage = JSON.parse(localStorage.getItem("cartStorage"));
 
-  return (
+    return (
     <main class="cart-body">
       <h1 class="heading">Shopping Cart</h1>
 
@@ -22,76 +17,30 @@ const Cart = (props) => {
         <section class="cart">
           <div class="cart-item-box">
             <h2 class="section-heading">Order Summary</h2>
-
             <div class="product-card">
-                <div id="cartForCart">
-                {cart.map((item) => (
-                    <div key={item.Products}>
-                    <div className="img-box">
-                        <img src={item.Image} className="product-img" />
-                    </div>
+                <div class="card-cart" id="cardForCart">
+                    {CartStorage.map((itemness)=>{
+                        return(
+                            <div className="thisCart">
+                                <div class="img-box">
+                                    <img src={itemness.Image} class="product-img" />
+                                </div>
 
-                    <div className="detail">
-                        <h4 className="product-name">{item.Products}</h4>
-                        <div className="wrapper">
-                        <div className="product-qty">
-                            <button id="decrement">
-                            <i className="fa-solid fa-minus"></i>
-                            </button>
-
-                            <span id="quantity">1</span>
-
-                            <button id="increment">
-                            <i className="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-
-                        <div className="price">
-                            $ <span id="price">{item.Price}</span>
-                        </div>
-                        </div>
-                    </div>
-
-                    <button className="product-close-btn">
-                        <i className="fa-solid fa-xmark"></i>
-                    </button>
-                    </div>
-                ))}
+                                <div class="detail">
+                                    <h4 class="product-name">{itemness.Products}</h4>
+                                    <div class="wrapper">
+                                        <div class="price">
+                                            <h4 id="price">₱{itemness.Price}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="product-close-btn">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        )
+                    })}
                 </div>
-            </div>
-
-            <div class="product-card">
-              <div class="card-cart">
-                <div class="img-box">
-                  <img src={product2} width="80px" class="product-img" />
-                </div>
-
-                <div class="detail">
-                  <h4 class="product-name">Sprite</h4>
-
-                  <div class="wrapper">
-                    <div class="product-qty">
-                      <button id="decrement">
-                        <i class="fa-solid fa-minus"></i>
-                      </button>
-
-                      <span id="quantity">1</span>
-
-                      <button id="increment">
-                        <i class="fa-solid fa-plus"></i>
-                      </button>
-                    </div>
-
-                    <div class="price">
-                      $ <span id="price">0.80</span>
-                    </div>
-                  </div>
-                </div>
-
-                <button class="product-close-btn">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
-              </div>
             </div>
           </div>
 
