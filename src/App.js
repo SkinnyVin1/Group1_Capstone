@@ -12,6 +12,7 @@ import Body from "./Pages/Body";
 import NavforMobile from "./Components/NavbarForMobile";
 import Register from "./Pages/Register";
 import Cart from "./Pages/Cart";
+import Profile from "./Pages/Profile";
 
 function App() {
   // function redirectToHomePage() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/Login" element={<LoginPage />}></Route>
           <Route path="/Register" element={<Register />}></Route>
           <Route path="/Cart" element={<Cart />}></Route>
+          <Route path="/Profile" element={<Profile />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

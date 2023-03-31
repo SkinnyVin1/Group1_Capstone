@@ -2,8 +2,6 @@ import "../Components/Item.css";
 import { useState } from "react";
 import Cart from "../Pages/Cart";
 
-
-
 const Item = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState("none");
@@ -11,8 +9,12 @@ const Item = (props) => {
   const [cart, setCart] = useState([]);
   // const [Items, setItems] = useState(``);
 
-  function addToCart() {
-    const newCartItem = { Products: props.prodName, Price: props.price, Image: props.image };
+  function addToCart(name) {
+    const newCartItem = {
+      Products: props.prodName,
+      Price: props.price,
+      Image: props.image,
+    };
     setCart([...cart, newCartItem]);
     localStorage.setItem("cartStorage", JSON.stringify([...cart, newCartItem]));
   }
@@ -104,7 +106,7 @@ const Item = (props) => {
                     value={quantity}
                     onChange={(e) => setQuantity(parseInt(e.target.value))}
                   />
-                  <button id="plus" onClick={prodQuantity}>
+                  <button id="plus" onClick={() => prodQuantity()}>
                     +
                   </button>
                 </div>
@@ -135,7 +137,7 @@ const Item = (props) => {
           </div>
         </div>
       </div>
-      <div style={{display: "none"}}>
+      <div style={{ display: "none" }}>
         <Cart cart={cart}></Cart>
       </div>
     </div>

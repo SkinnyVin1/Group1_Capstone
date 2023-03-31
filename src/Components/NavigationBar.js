@@ -16,17 +16,15 @@ const Navigationbar = () => {
       backgroundColor: activeLink === linkId ? "#8dd08a" : "white",
     };
   };
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
-   function isLoggednot() {
-    
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  function isLoggednot() {
     if (isLoggedIn) {
       // redirect to profile page
-      window.location.href = '/AboutUs';
+      window.location.href = "/Profile";
     } else {
       // redirect to login page
-      window.location.href = '/Login';
+      window.location.href = "/Login";
     }
-    
   }
   return (
     <div className="navibody">
@@ -75,7 +73,7 @@ const Navigationbar = () => {
             </Link>
           </li>
           <li>
-            <Link to='/Cart'>
+            <Link to="/Cart">
               <div className="icon-container">
                 <img src={Cart} alt="" />
                 <span>Cart</span>
