@@ -38,7 +38,7 @@ const LoginPage = () => {
           window.location.href = "/group1_capstone";
         }
       } else {
-        setWarningText("Username or Password did not match");
+        alert(response.data);
       }
     });
   };
