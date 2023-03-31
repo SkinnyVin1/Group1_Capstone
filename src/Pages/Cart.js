@@ -1,31 +1,18 @@
-import Footer from "../Components/Footer";
 import "./CartPage.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import product1 from "../Images/shop-images/Products/p1.png";
-import product2 from "../Images/shop-images/Products/p2.png";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 // import { useEffect } from "react";
 
 const Cart = () => {
   let CartStorage = JSON.parse(localStorage.getItem("cartStorage"));
-  let OrderStorage = localStorage.getItem("cartStorage");
   const isLoggedIn = localStorage.getItem("isLoggedIn");
-  // const [cartNone, setCartNone] = useState("");
-
-  // useEffect(() => {
-  //   let CartStorage = JSON.parse(localStorage.getItem("cartStorage"));
-  //   if (!CartStorage) {
-  //     setCartNone("Your Cart is Empty");
-  //   }
-  // }, []);
   function isLoggednot() {
     if (isLoggedIn) {
-      // redirect to profile page
       if (!CartStorage) {
         alert("Please Add some Product");
       } else {
         alert("Thank you for shoping. Your order is now on process");
-        localStorage.setItem("orderStorage", OrderStorage);
+        localStorage.setItem("orderStorage", JSON.stringify(CartStorage));
         localStorage.removeItem("cartStorage");
         window.location.href = "/group1_capstone";
       }
