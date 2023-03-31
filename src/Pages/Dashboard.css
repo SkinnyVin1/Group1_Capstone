@@ -1,0 +1,39 @@
+.dashBody{
+    width: 92%;
+    margin-left: 8%;
+    padding: 50px;
+    height: 100vh;
+}
+.dashBody h1{
+    padding-bottom: 20px;
+}
+.dashBody form{
+    display: flex;
+    flex-direction: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0 20px 0;
+}
+.dashBody form input{
+    width: 430px;
+    height: 50px;
+    
+    border-radius: 50px;
+    border:none;
+    background-color: #baedbf7e;
+    /* border:1px solid #80c187;
+    border-width: 1px; */
+    padding-left: 20px;
+}
+
+.addProd{
+    width: 200px;
+    height: 50px;
+
+    border: none;
+    background-color: #80c187;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+}

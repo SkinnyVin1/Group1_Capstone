@@ -10,14 +10,14 @@ const Cart = () => {
   let CartStorage = JSON.parse(localStorage.getItem("cartStorage"));
   let OrderStorage = localStorage.getItem("cartStorage");
   const isLoggedIn = localStorage.getItem("isLoggedIn");
-  const [cartNone, setCartNone] = useState("");
+  // const [cartNone, setCartNone] = useState("");
 
-  useEffect(() => {
-    let CartStorage = JSON.parse(localStorage.getItem("cartStorage"));
-    if (!CartStorage) {
-      setCartNone("Your Cart is Empty");
-    }
-  }, []);
+  // useEffect(() => {
+  //   let CartStorage = JSON.parse(localStorage.getItem("cartStorage"));
+  //   if (!CartStorage) {
+  //     setCartNone("Your Cart is Empty");
+  //   }
+  // }, []);
   function isLoggednot() {
     if (isLoggedIn) {
       // redirect to profile page
