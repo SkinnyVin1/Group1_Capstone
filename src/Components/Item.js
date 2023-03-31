@@ -15,7 +15,7 @@ const Item = (props) => {
       cart.push({ Products: name, Price: price, Image: image });
       localStorage.setItem("cartStorage", JSON.stringify(cart));
       alert();
-    } else {
+    }else {
       let cart = [];
       cart.push({ Products: name, Price: price, Image: image });
       // setCart(cart);

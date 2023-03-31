@@ -1,7 +1,7 @@
 import Logo from "../Images/logo.png";
 import "../Components/NavigationBar.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Avatar from "../Images/21-avatar-outline.png";
 import Cart from "../Images/146-basket-trolley-shopping-card-outline.png";
 import Heart from "../Images/heart.png";
@@ -26,6 +26,14 @@ const Navigationbar = () => {
       window.location.href = "/Login";
     }
   }
+  // function CartNone() {
+  //     if(localStorage.getItem("cartStorage") == null){
+  //       window.alert('The Cart is empty');
+  //       window.location.href = "/Shop";
+  //     }else{
+  //       window.location.href = "/Cart"
+  //     }
+  // }
   return (
     <div className="navibody">
       <div className="logo">

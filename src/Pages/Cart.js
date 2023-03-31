@@ -1,13 +1,11 @@
-import Footer from "../Components/Footer";
+
 import "./CartPage.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import product1 from "../Images/shop-images/Products/p1.png";
-import product2 from "../Images/shop-images/Products/p2.png";
-// import { useEffect } from "react";
 
 const Cart = () => {
 
     let CartStorage = JSON.parse(localStorage.getItem("cartStorage"));
+    
 
     return (
     <main class="cart-body">
